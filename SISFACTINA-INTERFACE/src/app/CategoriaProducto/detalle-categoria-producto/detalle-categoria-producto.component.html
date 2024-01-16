@@ -1,0 +1,35 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 pt-3 pb-3 fondo-color">
+            <h3 class="text-center">Detalles Categoria Producto</h3>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container" style="text-align: center">
+    <div class="row">
+            <div class="input-group mb-3 col-md-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Id:</span>
+                    </div>
+                    <input type="text" class="form-control" name="CategoriaProducto.Id"
+                        [(ngModel)]="CategoriaProducto.Id" readonly>
+                </div>
+        <div class="input-group mb-3 col-md-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Nombre:</span>
+            </div>
+            <input type="text" class="form-control" name="CategoriaProducto.Nombre"
+                [(ngModel)]="CategoriaProducto.Nombre" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Descripcion:</span>
+            </div>
+            <input type="text" class="form-control" name="CategoriaProducto.Descripcion"
+                [(ngModel)]="CategoriaProducto.Descripcion" readonly>
+        </div>
+    </div>
+    <button class="btn btn-outline-success" routerLink="/Indexcategoriaproduct">Atras</button>
+</div>

@@ -1,0 +1,93 @@
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 pt-4 pb-4 fondo-color">
+            <h2 class="text-center">Tipo de Exoneraciones</h2>
+        </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="md-form">
+              <input type="text" [(ngModel)]="buscador" class="form-control" id="search" mdbInput oninput="this.value = this.value.toUpperCase()">
+              <label for="search">Buscar</label>              
+            </div>
+          </div>
+          <div class="col-md-3">
+            <a [routerLink]="['/registroExoneracion']" class="btn btn-success">
+                <i class="fa fa-plus-square mr-2 pt-2" aria-hidden="true"></i>
+                Crear Exoneración
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+            <table mdbTable class="z-depth-1 table-responsive-md" hover="true">
+              <thead class="titulo-tabla" class="blue-grey darken-2 white-text">
+                <tr class="text-center" mdbTableCol>
+                  <th scope="col">Id</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col" colspan="3">Acción</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let exo of listaExo" class="text-center">
+                  <td *ngIf="exo.Nombre.toUpperCase().includes(buscador)||buscador==null||buscador==' '">{{exo.Id}}</td>
+                  <td *ngIf="exo.Nombre.toUpperCase().includes(buscador)||buscador==null||buscador==' '">{{exo.Nombre}}</td>
+                  <td *ngIf="exo.Nombre.toUpperCase().includes(buscador)||buscador==null||buscador==' '">{{exo.Valor}}</td>
+                  <td *ngIf="exo.Nombre.toUpperCase().includes(buscador)||buscador==null||buscador==' '">
+                    <button type="button" mdbBtn color="info" size="sm" (click)="ExoActual(exo)" [routerLink]="['/detallesExoneracion']">
+                      Detalles
+                    </button>
+                  </td>
+                  <td *ngIf="exo.Nombre.toUpperCase().includes(buscador)||buscador==null||buscador==' '">
+                    <button type="button" mdbBtn color="warning" size="sm" (click)="ExoActual(exo)" [routerLink]="['/modificarExoneracion']">
+                      Modificar
+                    </button>
+                  </td>
+                  <td *ngIf="exo.Nombre.toUpperCase().includes(buscador)||buscador==null||buscador==' '">
+                    <button type="button" mdbBtn color="danger" size="sm" (click)="ExoActual(exo)" class="waves-light" data-toggle="modal"
+                      data-target="#basicExample" (click)="frame.show()" mdbWavesEffect>Eliminar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  
+ 
+  <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+      <!--Content-->
+      <div class="modal-content text-center">
+        <!--Header-->
+        <div class="modal-header d-flex justify-content-center">
+          <p class="heading">Eliminar Tipo Exoneración</p>
+        </div>
+  
+        <!--Body-->
+        <div class="modal-body">
+          <p>Desea eliminar este tipo de exoneración?</p>
+        </div>
+  
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <a (click)="eliminarExo(exo)" (click)="frame.hide()"  mdbBtn color="danger" class="waves-light" mdbWavesEffect>Si</a>
+          <a type="button" mdbBtn color="danger" outline="true" class="waves-light" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+
+</body>

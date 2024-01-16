@@ -1,0 +1,11 @@
+#cabecera{
+    border-bottom: 0px;
+}
+
+th, td {
+    width: 20%;
+    text-align: left;
+    vertical-align: top;
+    border-collapse: collapse;
+    padding: 0.3em;
+}

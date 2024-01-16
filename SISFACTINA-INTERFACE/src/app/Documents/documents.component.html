@@ -1,0 +1,95 @@
+<!--AQUI VA LA TABLA-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 pt-3 pb-3 fondo-color">
+      <h2 class="text-center">Facturas</h2>
+    </div>
+  </div>
+  <br>
+  <!--******************************************************************************************-->
+  <mdb-card cascade="true" narrower="true"  class="mb-5">
+    <div class="view view-cascade titulo green darken-3">
+      <h2 class="card-header-title pt-3 pb-2 ml-3">Buscador</h2>
+    </div>
+    <mdb-card-body>
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+        <!-- buscadores -->
+          
+            <div class="md-form form-group mb-3">
+              <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="docBusca.Id">
+              <label for="form1" class="">ID</label>
+            </div>
+  
+            <div class="md-form form-group mb-3">
+                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="docBusca.Clave">
+                <label for="form1" class="">Clave</label>
+            </div>
+            
+            <div class="md-form form-group mb-3">
+                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="docBusca.Consecutivo">
+                <label for="form1" class="">Consecutivo</label>
+            </div>
+          </div>
+  
+          <!-- hacer un salto de linea -->
+          <div class="col-md-6">
+              <div class="md-form form-group mb-3">
+                  <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="docBusca.IdCliente">
+                  <label for="form1" class="">ID Cliente</label>
+              </div>
+              <div class="md-form form-group mb-3">
+                  <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="docBusca.TipoDocumento">
+                  <label for="form1" class="">Tipo Doc</label>
+              </div>
+            <span>
+              <button type="submit" class="btn btn-outline-success mr-2" (click)="FiltrarLista(docBusca)">Buscar</button>
+            </span>
+            <span>
+              <button type="submit" class="btn btn-outline-warning" (click)="reCargar()">Refrescar</button>
+            </span>
+            <span>
+              <button type="submit" class="btn btn-outline-info" (click)="CargarFacturas()">Obtener Todas las Facturas</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+  <!--*********************************************************************-->
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+    <div class="table-responsive">
+      <table class="table table-hover" mdbTable>
+        <thead class="titulo-tabla" class="blue-grey darken-2 white-text">
+          <tr class="text-center" mdbTableCol>
+            <th scope="col">Id</th>
+            <th scope="col">Clave</th>
+            <th scope="col">Consecutivo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Id Cliente</th>
+            <th scope="col">Tipo de Doc</th>
+            <th scope="col">Plazo</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let doc of ListaDocActules" mdbTableCol>
+            <td>{{doc.Id}}</td>
+            <td>{{doc.Clave}}</td>
+            <td>{{doc.Consecutivo}}</td>
+            <td>{{doc.Fecha}}</td>
+            <td>{{doc.IdCliente}}</td>
+            <td>{{doc.TipoDocumento}}</td>
+            <td>{{doc.Plazo}}</td>
+            <td><button class="btn btn-outline-info" (click)="DocActual(doc)"
+                [routerLink]="['/detalleFactura',doc.Id]">Modificar</button></td>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>

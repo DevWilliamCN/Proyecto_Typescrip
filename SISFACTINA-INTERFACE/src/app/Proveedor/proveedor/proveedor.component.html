@@ -1,0 +1,244 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 pt-3 pb-3 fondo-color">
+      <h3 class="text-center" *ngIf="TextoPrincipal==true">Crear Proveedor</h3>
+      <h3 class="text-center" *ngIf="TextoPrincipal==false"> Modificar Proveedor</h3>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="card">
+    <div class="card-heading bg-success text-white text-center pt-3 pb-2">
+      <h4>Datos de Proveedor</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Identificacion:</span>
+          </div>
+
+          <input type="text" class="form-control" name="TbPersona.Identificacion"
+            [(ngModel)]="Proveedor.TbPersona.Identificacion" maxlength="29" [readonly]="readonly">
+
+          <div class="input-group-append">
+            <button mdbBtn type="button" mdbWavesEffect color="light-blue" outline="" size="sm"
+              (click)="Buscar(Proveedor.TbPersona.Identificacion)" class="m-0 px-3 py-2 rounded-right"><i
+                class="fa fa-search fa-lg"></i></button>
+          </div>
+        </div>
+        <div class="input-group mb-3 col-md-4 ">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Tipo Id:</span>
+          </div>
+          <select class="form-control" name="TbPersona.TipoId" [(ngModel)]="Proveedor.TbPersona.TipoId"
+            [disabled]="disabled">
+            <option *ngFor="let TipoId of listaTipoId" value="{{TipoId.Id}}">
+              {{TipoId.Nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo Electronico:</span>
+          </div>
+
+          <input type="text" class="form-control" required name="TbPersona.CorreoElectronico" maxlength="49"
+            [(ngModel)]="Proveedor.TbPersona.CorreoElectronico">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-md-12">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre Completo:</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Nombre" name="TbPersona.Nombre" maxlength="99"
+            [(ngModel)]="Proveedor.TbPersona.Nombre">
+          <input type="text" class="form-control" placeholder="Primer Apellido" name="TbPersona.Apellido1"
+            maxlength="29" [(ngModel)]="Proveedor.TbPersona.Apellido1">
+          <input type="text" class="form-control" placeholder="Segundo Apellido" name="TbPersona.Apellido2"
+            maxlength="29" [(ngModel)]="Proveedor.TbPersona.Apellido2">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Fecha Nacimiento:</span>
+          </div>
+          <input type="date" class="form-control" name="TbPersona.FechaNac" [(ngModel)]="Proveedor.TbPersona.FechaNac">
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Codigo Pais Tel:</span>
+          </div>
+          <select class="form-control" name="TbPersona.CodigoPaisTel" [(ngModel)]="Proveedor.TbPersona.CodigoPaisTel">
+            <option value="506">
+              Costa Rica (+506)
+            </option>
+
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Telefono:</span>
+          </div>
+
+          <input type="text" class="form-control" name="TbPersona.Telefono" [(ngModel)]="Proveedor.TbPersona.Telefono"
+            required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Sexo:</span>
+          </div>
+          <select class="form-control" name="TbPersona.Sexo" [(ngModel)]="Proveedor.TbPersona.Sexo">
+            <option value="1">
+              Masculino
+            </option>
+            <option value="2">
+              Femenino
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Codigo Pais Fax:</span>
+          </div>
+          <select class="form-control" name="TbPersona.CodigoPaisFax" [(ngModel)]="Proveedor.TbPersona.CodigoPaisFax">
+            <option value="506">
+              Costa Rica (+506)
+            </option>
+
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Fax:</span>
+          </div>
+          <input type="text" class="form-control" name="TbPersona.Fax" [(ngModel)]="Proveedor.TbPersona.Fax">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Provincia:</span>
+          </div>
+
+          <select class="form-control" name="TbPersona.Provincia" [(ngModel)]="Proveedor.TbPersona.Provincia"
+            (change)="onChangeProv($event.target.value)">
+            <option *ngFor="let Provincia of listaProvincia" value="{{Provincia.Cod}}">
+              {{Provincia.Nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Canton:</span>
+          </div>
+          <select class="form-control" name="Proveedor.TbPersona.Canton" [(ngModel)]="Proveedor.TbPersona.Canton"
+            (change)="onChangeCanton($event.target.value)">
+            <option *ngFor="let Canton of listaCantonCombo" value="{{Canton.Canton}}">
+              {{Canton.Nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Distrito:</span>
+          </div>
+          <select class="form-control" name="Proveedor.TbPersona.Distrito" [(ngModel)]="Proveedor.TbPersona.Distrito"
+            (change)="onChangeDistrito($event.target.value)">
+            <option *ngFor="let Distrito of listaDistritoCombo" value="{{Distrito.Distrito}}">
+              {{Distrito.Nombre}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Barrio:</span>
+          </div>
+          <select class="form-control" [(ngModel)]="Proveedor.TbPersona.Barrio" name="TbPersona.Barrio">
+            <option *ngFor="let Barrio of listaBarrioCombo" value="{{Barrio.Barrio}}">
+              {{Barrio.Nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-heading bg-info text-white text-center pt-3 pb-2">
+      <h4>Detalles de Proveedor</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Contacto Proveedor:</span>
+          </div>
+          <input type="text" class="form-control" name="ContactoProveedor" maxlength="149"
+            [(ngModel)]="Proveedor.ContactoProveedor">
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Encargado Contabilidad:</span>
+          </div>
+          <input type="text" class="form-control" name="EncargadoConta" maxlength="49"
+            [(ngModel)]="Proveedor.EncargadoConta">
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre Tributario:</span>
+          </div>
+          <input type="text" class="form-control" name="NombreTributario" maxlength="49"
+            [(ngModel)]="Proveedor.NombreTributario">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo Electronico Contabilidad:</span>
+          </div>
+
+          <input type="text" class="form-control" name="CorreoElectConta" maxlength="49"
+            [(ngModel)]="Proveedor.CorreoElectConta">
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Fax:</span>
+          </div>
+
+          <input type="text" class="form-control" name="Fax" maxlength="9" [(ngModel)]="Proveedor.Fax">
+        </div>
+
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Cuenta Bancaria:</span>
+          </div>
+          <input type="text" class="form-control" name="CuentaBancaria" maxlength="49"
+            [(ngModel)]="Proveedor.CuentaBancaria">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-group mb-3 col-md-12">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Descripcion:</span>
+          </div>
+          <textarea type="text" class="form-control" name="Descripcion" maxlength="499"
+            [(ngModel)]="Proveedor.Descripcion"></textarea>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-outline-success" (click)="CrearProveedor(Proveedor)"
+    *ngIf="BotonCrear">Crear</button>
+  <button class="btn btn-outline-success" (click)="ModificarProveedor(Proveedor)" *ngIf="BotonModificar"
+    [routerLink]="['/Indexproveedor']">Modificar</button>
+  <button class="btn btn-outline-danger" (click)="Cancelar()" [routerLink]="['/Indexproveedor']">Cancelar</button>
+</div>

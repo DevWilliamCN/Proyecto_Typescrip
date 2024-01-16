@@ -1,0 +1,251 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 pt-3 pb-3 fondo-color">
+      <h3 class="text-center text-white">Detalles del Proveedor</h3>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container">
+  <button class="btn btn-success" [routerLink]="['/Indexproveedor']">Atras</button>
+  <br>
+  <div class="card">
+    <div class="card-heading bg-success text-white pt-3 pb-2" style="text-align: center">
+      <h4>Datos Personales</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Identificacion:</span>
+          </div>
+
+          <input type="text" class="form-control" name="TbPersona.Identificacion"
+            [(ngModel)]="Proveedor.TbPersona.Identificacion" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Tipo Id:</span>
+          </div>
+          <input type="text" class="form-control" name="TbPersona.Tipo.Nombre"
+            [(ngModel)]="Proveedor.TbPersona.Tipo.Nombre" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo Electronico:</span>
+          </div>
+
+          <input type="text" class="form-control" name="TbPersona.CorreoElectronico"
+            [(ngModel)]="Proveedor.TbPersona.CorreoElectronico" readonly>
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="input-group mb-3 col-md-12 ">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre Completo:</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Nombre" name="TbPersona.Nombre"
+            [(ngModel)]="Proveedor.TbPersona.Nombre" readonly>
+          <input type="text" class="form-control" placeholder="Primer Apellido" name="TbPersona.Apellido1"
+            [(ngModel)]="Proveedor.TbPersona.Apellido1" readonly>
+          <input type="text" class="form-control" placeholder="Segundo Apellido" name="TbPersona.Apellido2"
+            [(ngModel)]="Proveedor.TbPersona.Apellido2" readonly>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Fecha Nacimiento:</span>
+          </div>
+
+          <input type="datetime" class="form-control" name="fechanacimiento"
+            [(ngModel)]="fechanacimiento" readonly>
+        </div>     
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Codigo Pais Tel:</span>
+          </div>
+          <select class="form-control" name="TbPersona.CodigoPaisTel" [(ngModel)]="Proveedor.TbPersona.CodigoPaisTel" disabled>
+              <option value="506       " > <!--IMPORTANTE,MANTENER EL ESPACIO EN BLANCO ---NO BORRAR POR FAVOR--- ,VALIDACION DE BASE DE DATOS-->
+                Costa Rica (+506)
+              </option>
+  
+            </select>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Telefono:</span>
+            </div>
+  
+            <input type="tel" class="form-control" name="TbPersona.Telefono" [(ngModel)]="Proveedor.TbPersona.Telefono"
+              readonly>
+          </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="input-group mb-3 col-md-4">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Sexo:</span>
+              </div>
+              <select class="form-control" name="TbPersona.Sexo" [(ngModel)]="Proveedor.TbPersona.Sexo" disabled>
+                <option value="1">
+                  Hombre
+                </option>
+                <option value="2">
+                  Mujer
+                </option>
+              </select>
+            </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Codigo Pais Fax:</span>
+          </div>
+          <select class="form-control" name="TbPersona.CodigoPaisFax" [(ngModel)]="Proveedor.TbPersona.CodigoPaisFax" disabled>
+              <option value="506">
+                Costa Rica (+506)
+              </option>
+  
+            </select>
+        </div>
+        <div class="input-group mb-3 col-md-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Fax:</span>
+          </div>
+          <input type="text" class="form-control" name="TbPersona.Fax" [(ngModel)]="Proveedor.TbPersona.Fax" readonly>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Provincia:</span>
+          </div>
+
+          <input type="text" class="form-control" name="Provincia.Nombre" [(ngModel)]="Provincia.Nombre" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Canton:</span>
+          </div>
+          <input type="text" class="form-control" name="Canton.Nombre" [(ngModel)]="Canton.Nombre" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Distrito:</span>
+          </div>
+          <input type="text" class="form-control" name="Distrito.Nombre" [(ngModel)]="Distrito.Nombre" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Barrio:</span>
+          </div>
+          <input type="text" class="form-control" name="Barrio.Nombre" [(ngModel)]="Barrio.Nombre" readonly>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-heading bg-info text-white pt-3 pb-2" style="text-align: center">
+      <h4>Datos de Proveedor</h4>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="input-group mb-3 col-md-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Contacto Proveedor:</span>
+          </div>
+          <input type="text" class="form-control" name="ContactoProveedor" [(ngModel)]="Proveedor.ContactoProveedor"
+            readonly>
+        </div>
+       
+        <div class="input-group mb-3 col-md-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Fax:</span>
+          </div>
+
+          <input type="text" class="form-control" name="Fax" [(ngModel)]="Proveedor.Fax" readonly>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="input-group mb-3 col-md-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Encargado Contabilidad:</span>
+          </div>
+          <input type="text" class="form-control" name="EncargadoConta" [(ngModel)]="Proveedor.EncargadoConta" readonly>
+        </div>
+
+        <div class="input-group mb-3 col-md-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Nombre Tributario:</span>
+          </div>
+          <input type="text" class="form-control" name="NombreTributario" [(ngModel)]="Proveedor.NombreTributario"
+            readonly>
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="input-group mb-3 col-md-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Correo Electronico Contabilidad:</span>
+          </div>
+
+          <input type="text" class="form-control" name="CorreoElectConta" [(ngModel)]="Proveedor.CorreoElectConta"
+            readonly>
+        </div>
+        <div class="input-group mb-3 col-md-6">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Cuenta Bancaria:</span>
+          </div>
+          <input type="text" class="form-control" name="CuentaBancaria" [(ngModel)]="Proveedor.CuentaBancaria" readonly>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+          <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Fecha Creacion:</span>
+              </div>
+              <input type="text" class="form-control" name="fechacrea" [(ngModel)]="fechacrea" readonly>
+        </div>
+        <div class="input-group mb-3 col-md-6">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Usuario Creacion:</span>
+              </div>
+              <input type="text" class="form-control" name="Proveedor.UsuarioCrea" [(ngModel)]="Proveedor.UsuarioCrea" readonly>
+        </div>       
+      </div>
+      <br>
+      <div class="row">
+          <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Fecha Ult Modificacion:</span>
+                </div>
+                <input type="text" class="form-control" name="fechaModifico" [(ngModel)]="fechaModifico" readonly>
+          </div>
+          <div class="input-group mb-3 col-md-6">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Usuario Ult Modificacion:</span>
+                </div>
+                <input type="text" class="form-control" name="Proveedor.UsuarioUltMod" [(ngModel)]="Proveedor.UsuarioUltMod" readonly>
+          </div>
+      </div>
+      <br>
+      <div>
+          <div class="input-group mb-3 col-md-12">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Descripcion:</span>
+              </div>
+              <textarea type="text" class="form-control" name="Descripcion" [(ngModel)]="Proveedor.Descripcion" readonly></textarea>
+            </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success" [routerLink]="['/Indexproveedor']">Atras</button>
+</div>
